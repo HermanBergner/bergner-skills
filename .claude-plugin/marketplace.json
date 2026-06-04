@@ -1,0 +1,16 @@
+{
+  "name": "bergner-skills",
+  "description": "Herman Bergner's public marketplace of reusable Claude Code agent skills.",
+  "owner": { "name": "Herman Bergner" },
+  "plugins": [
+    {
+      "name": "bergner-authoring",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/HermanBergner/bergner-skills.git",
+        "path": "plugins/bergner-authoring"
+      },
+      "description": "Authoring skills: house formats for plans, Claude Code task handovers, PR review, and repo docs."
+    }
+  ]
+}
