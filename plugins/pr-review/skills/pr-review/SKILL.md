@@ -1,5 +1,6 @@
 ---
 description: The house pull-request discipline. One task = one PR, opened not merged (the human reviews and squash-merges); every changed line traces to the request; scope creep and unrelated refactors are flagged; verification is recorded in the PR; security criteria are reviewed first-class. Use when opening a PR for review or reviewing someone else's, to check it against the house bar before merge.
+group: [Authoring]
 ---
 
 # PR review discipline

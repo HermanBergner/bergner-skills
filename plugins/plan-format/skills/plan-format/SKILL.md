@@ -1,5 +1,6 @@
 ---
 description: The house format for a phased implementation/design plan — a status-stamped document with a TL;DR, recorded decisions ("why this shape"), first-class security requirements, an architecture sketch, tasks scoped one-PR-each with an explicit order, deferred/out-of-scope, a devil's-advocate section, and a handoff. Use when writing, structuring, or reviewing a plan for a new capability or a multi-step change before any code is written.
+group: [Authoring]
 ---
 
 # Plan format

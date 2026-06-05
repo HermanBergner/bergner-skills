@@ -1,5 +1,6 @@
 ---
 description: The platform's standard for how a repository documents itself — what belongs in the README versus ARCHITECTURE/design docs versus runbooks, how they cross-reference, and the conventions that keep docs discoverable and current across the bergner-* repos. Use when creating a new repo's docs or auditing an existing repo's documentation for completeness and consistency.
+group: [Authoring]
 ---
 
 # Repo documentation standard

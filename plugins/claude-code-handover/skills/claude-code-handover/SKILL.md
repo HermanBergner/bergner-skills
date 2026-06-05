@@ -1,5 +1,6 @@
 ---
 description: The house format for handing a discrete task to a Claude Code agent. Front-loads the context the agent must read first (plan + repo pointers), states exactly what the task is and is NOT (scope boundaries), names verify gates the agent must not guess past, and lists guardrails (one PR opened-not-merged, no secrets, stay in scope). Use when writing a task brief or handover for an agent to implement, so it has what it needs and does not improvise.
+group: [Authoring]
 ---
 
 # Claude Code handover format
