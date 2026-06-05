@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "repo-doc-standard",
+  "description": "The platform's standard for how a repository documents itself — README vs ARCHITECTURE/design vs runbooks, how they cross-reference, and the conventions that keep docs current.",
+  "author": { "name": "Herman Bergner" },
+  "keywords": ["authoring", "documentation", "repo"]
+}

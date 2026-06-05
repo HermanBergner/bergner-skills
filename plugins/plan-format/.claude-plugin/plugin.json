@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "plan-format",
+  "description": "The house format for a phased implementation/design plan — TL;DR, recorded decisions, first-class security requirements, one-PR-each tasks, devil's-advocate, handoff.",
+  "author": { "name": "Herman Bergner" },
+  "keywords": ["authoring", "plan", "design"]
+}

@@ -1,7 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "bergner-authoring",
-  "description": "Authoring skills — reusable formats and disciplines for writing plans, Claude Code task handovers, PR reviews, and repository docs.",
-  "author": { "name": "Herman Bergner" },
-  "keywords": ["authoring", "plan", "handover", "pr-review", "documentation"]
-}

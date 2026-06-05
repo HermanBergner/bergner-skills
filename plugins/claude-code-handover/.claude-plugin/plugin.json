@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "claude-code-handover",
+  "description": "The house format for handing a discrete task to a Claude Code agent — front-loaded context, explicit scope boundaries, verify gates, and guardrails.",
+  "author": { "name": "Herman Bergner" },
+  "keywords": ["authoring", "handover", "agent"]
+}
