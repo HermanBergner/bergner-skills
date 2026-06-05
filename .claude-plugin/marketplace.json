@@ -6,6 +6,15 @@
   },
   "plugins": [
     {
+      "name": "authoring-todo-tasks",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/HermanBergner/bergner-skills.git",
+        "path": "plugins/authoring-todo-tasks"
+      },
+      "description": "The house operating manual for authoring tasks in the Bergner todo MCP — field-to-tool mapping, search-first dedupe and relation discovery, agent vs human task bodies, types/labels/priorities/relations, and bulk authoring."
+    },
+    {
       "name": "claude-code-handover",
       "source": {
         "source": "git-subdir",
