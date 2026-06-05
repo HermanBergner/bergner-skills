@@ -172,11 +172,18 @@ the decision in the task when made.
 
 ## 4. Relations — same project only
 
-`todo:create_relation` links two tasks **in the same project** with a typed
-edge:
-- `blocks` / `blocked_by` — a real ordering constraint (A must finish before B).
-- `related_to` — the default for tasks in one feature. Do not overuse `blocks`;
-  if two tasks can run in parallel, they are `related_to`.
+`todo:create_relation(source_id, target_id, type)` links two tasks **in the
+same project** with a typed edge. The **settable** types are exactly `blocks`,
+`relates_to`, and `duplicate_of`:
+- `blocks` — a real ordering constraint (the source must finish before the
+  target). To record "A is **blocked by** B", create a `blocks` edge **from B to
+  A**. `blocked_by` is **not** a type you set — it is the read-only inverse view
+  you get when reading A (with an `is_blocked` flag); likewise `duplicate` is the
+  read-only inverse of `duplicate_of`.
+- `relates_to` — the default for tasks in one feature. Do not overuse `blocks`;
+  if two tasks can run in parallel, they are `relates_to`.
+- `duplicate_of` — the source duplicates the target (rare; prefer not creating a
+  duplicate at all — see §5).
 
 **Cross-project dependencies cannot be relations.** State them in the body
 Context as `Blocked by: <Project> / <task title>`. (Example: a "Coder Service"
@@ -208,8 +215,8 @@ piece of work); add the full-text search when there are obvious keywords. Use
 |---|---|
 | the **same** task (open or done) | **Don't create.** If done, say so. If open, stop and flag it rather than duplicate. |
 | **very similar / overlapping** | **Stop and ask** the user: fold into the existing task, supersede it, or keep both? Don't auto-merge. |
-| **related** (same feature/area) | Create, then `related_to` it (same project) or note it in Context (cross-project). |
-| **a dependency** (this needs that first, or blocks it) | Create, then `blocks` / `blocked_by` (same project) or a `Blocked by:` body note (cross-project). |
+| **related** (same feature/area) | Create, then `relates_to` it (same project) or note it in Context (cross-project). |
+| **a dependency** (this needs that first, or blocks it) | Create, then a `blocks` edge from the blocker (same project) or a `Blocked by:` body note (cross-project). |
 | **unrelated** | Proceed normally. |
 
 This is also the only way to wire correct relations: the candidates for §4's
