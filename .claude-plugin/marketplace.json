@@ -4,51 +4,5 @@
   "owner": {
     "name": "Herman Bergner"
   },
-  "plugins": [
-    {
-      "name": "authoring-todo-tasks",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/HermanBergner/bergner-skills.git",
-        "path": "plugins/authoring-todo-tasks"
-      },
-      "description": "The house operating manual for authoring tasks in the Bergner todo MCP — field-to-tool mapping, search-first dedupe and relation discovery, agent vs human task bodies, types/labels/priorities/relations, and bulk authoring."
-    },
-    {
-      "name": "claude-code-handover",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/HermanBergner/bergner-skills.git",
-        "path": "plugins/claude-code-handover"
-      },
-      "description": "The house format for handing a discrete task to a Claude Code agent — front-loaded context, explicit scope boundaries, verify gates, and guardrails."
-    },
-    {
-      "name": "plan-format",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/HermanBergner/bergner-skills.git",
-        "path": "plugins/plan-format"
-      },
-      "description": "The house format for a phased implementation/design plan — TL;DR, recorded decisions, first-class security requirements, one-PR-each tasks, devil's-advocate, handoff."
-    },
-    {
-      "name": "pr-review",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/HermanBergner/bergner-skills.git",
-        "path": "plugins/pr-review"
-      },
-      "description": "The house pull-request discipline — one task = one PR opened not merged, every line traces to the request, scope creep flagged, verification and security reviewed first-class."
-    },
-    {
-      "name": "repo-doc-standard",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/HermanBergner/bergner-skills.git",
-        "path": "plugins/repo-doc-standard"
-      },
-      "description": "The platform's standard for how a repository documents itself — README vs ARCHITECTURE/design vs runbooks, how they cross-reference, and the conventions that keep docs current."
-    }
-  ]
+  "plugins": []
 }
