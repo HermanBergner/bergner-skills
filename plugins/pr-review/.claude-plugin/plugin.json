@@ -1,7 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "pr-review",
-  "description": "The house pull-request discipline — one task = one PR opened not merged, every line traces to the request, scope creep flagged, verification and security reviewed first-class.",
-  "author": { "name": "Herman Bergner" },
-  "keywords": ["authoring", "pr-review", "review"]
-}

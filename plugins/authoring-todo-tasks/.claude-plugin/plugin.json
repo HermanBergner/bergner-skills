@@ -1,7 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "authoring-todo-tasks",
-  "description": "The house operating manual for authoring tasks in the Bergner todo MCP — field-to-tool mapping, search-first dedupe and relation discovery, agent vs human task bodies, types/labels/priorities/relations, and bulk authoring.",
-  "author": { "name": "Herman Bergner" },
-  "keywords": ["authoring", "todo", "tasks", "mcp"]
-}
