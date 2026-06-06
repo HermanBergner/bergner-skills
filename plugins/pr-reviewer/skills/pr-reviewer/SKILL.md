@@ -10,7 +10,7 @@ description: >-
   Python (FastAPI / SQLAlchemy 2.0 / uv) repos. Reads the review task for its
   repo + PR, reviews the diff read-only, and comments the verdict back on the
   task. Never approves and never merges — the human does.
-group: [Review]
+group: [GitHub, Review]
 ---
 
 # Reviewing a pull request
