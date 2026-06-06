@@ -1,4 +1,4 @@
-# pr-reviewer
+# pr-review
 
 The platform's pull-request reviewer — it works a todo task in the **Review**
 column, reviews the PR that task produced, and comments a high-signal verdict

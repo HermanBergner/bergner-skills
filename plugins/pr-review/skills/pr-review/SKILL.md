@@ -1,5 +1,6 @@
 ---
-name: pr-reviewer
+name: pr-review
+version: "1.0.0"
 description: >-
   Reviews a GitHub pull request for the Bergner platform — checks the diff
   against the todo task's acceptance criteria, then for scope creep, bugs,
