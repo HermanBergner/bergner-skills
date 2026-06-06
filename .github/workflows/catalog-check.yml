@@ -1,0 +1,22 @@
+name: catalog-check
+
+# Fail any PR (and any push to main) whose committed
+# .claude-plugin/marketplace.json has drifted from the plugins on disk, so a
+# merged or removed plugin can never ship a stale catalog. The check is
+# tools/gen-marketplace.py --check (stdlib-only; no runner setup needed).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  catalog-in-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: marketplace.json is in sync with plugins on disk
+        run: python3 tools/gen-marketplace.py --check
