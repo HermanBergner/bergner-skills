@@ -78,7 +78,12 @@ Comments (append-only)
   principal), `todo:list_comments`.
 
 Relations (same project only)
-- `todo:create_relation`, `todo:list_relations`, `todo:delete_relation`.
+- `todo:create_relation(source_id, target_id, type)` — `type` is one of the
+  **settable** types `blocks` · `relates_to` · `duplicate_of`. `blocked_by` and
+  `duplicate` are **read-only inverse views** returned when reading a task (with
+  an `is_blocked` flag), never values you pass — to record "A blocked by B",
+  create `blocks` from B to A.
+- `todo:list_relations`, `todo:delete_relation`.
 
 ## Field → which call sets it
 
@@ -95,7 +100,7 @@ Relations (same project only)
 | labels (N) | `attach_label` / `detach_label` | label must exist in the project |
 | parent (sub-task) | `create_task` (`parent_id`) | one level only |
 | order in column | `reorder_task` | running order, distinct from priority |
-| relation | `create_relation` | same project only |
+| relation | `create_relation` | same project; `blocks`/`relates_to`/`duplicate_of` (`blocked_by`/`duplicate` are read-only inverses) |
 | repo / is_agent_task | **body machine-header** | not a live field yet (SKILL.md §6) |
 
 ## Vocabularies
