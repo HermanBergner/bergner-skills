@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "pr-review",
+  "description": "Reviews a GitHub PR the way the platform expects — diff-focused, only findings it is ≥80 confident in, acceptance-criteria + scope + secrets + security first-class, the summary commented back on the todo review task. Read-only; never approves, never merges.",
+  "author": { "name": "Herman Bergner" },
+  "keywords": ["review", "pr-review", "pull-request", "code-review"]
+}
