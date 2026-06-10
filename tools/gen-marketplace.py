@@ -10,8 +10,10 @@ manifests. (rev1 §3.1 said "no generator in the public repo"; rev2 §5 Phase B
 narrows that to admit exactly this minimal catalog assembler, which keeps nothing
 sensitive — see the PR.)
 
-It reads ONLY each plugin's manifest, never any SKILL.md and never the display-only
-`group:` frontmatter. That is the rev2 §3.2 decoupling enforced in code: the
+The catalog DATA comes only from each plugin's manifest. Each skill's SKILL.md
+frontmatter is additionally read for VALIDATION (a non-empty `description` and
+`group`, so a bad skill fails CI here rather than at site-build time) — but
+nothing from it enters the catalog. That keeps the rev2 §3.2 decoupling: the
 grouping metadata can never enter marketplace.json nor influence a plugin
 `source`/`path` (those derive solely from the plugin directory name). The flat
 catalog is the only thing Claude Code consumes; the nested sidebar is built
@@ -19,8 +21,14 @@ separately by the site generator from the `group:` frontmatter.
 
 Each plugin's `source` is the rev1/R2 `git-subdir` form (url + required `path`):
 adding the catalog (over its served URL or this git repo) resolves the plugin
-files from this public repo. Install grain is the plugin == one skill, so
-`/plugin install <skill>@bergner-skills` installs exactly that skill.
+files from this public repo. Install grain is the PLUGIN: a plugin ships one or
+more skills at `plugins/<plugin>/skills/<skill>/SKILL.md` (the skill dir name
+need not equal the plugin name) and optionally slash commands at
+`plugins/<plugin>/commands/*.md`. `/plugin install <plugin>@bergner-skills`
+installs everything in that plugin dir. Commands are not surfaced in the
+catalog — Claude Code discovers them from the installed plugin dir, and an
+extra key on a catalog entry risks colliding with the installer's own schema
+(where `commands` means path overrides).
 
 Usage:
     python3 tools/gen-marketplace.py            # write .claude-plugin/marketplace.json
@@ -46,6 +54,37 @@ MARKET_OWNER = {"name": "Herman Bergner"}
 REPO_GIT_URL = "https://github.com/HermanBergner/bergner-skills.git"
 
 
+def _frontmatter_fields(text: str) -> dict:
+    """Top-level `key: value` pairs from a SKILL.md's leading `---` block —
+    just enough to validate, not a YAML parser."""
+    if not text.startswith("---"):
+        return {}
+    end = text.find("\n---", 3)
+    if end == -1:
+        return {}
+    fields = {}
+    for line in text[3:end].splitlines():
+        key, sep, val = line.partition(":")
+        if sep and line[:1].strip():
+            fields[key.strip()] = val.strip()
+    return fields
+
+
+def validate_skills(pdir: Path) -> None:
+    """A plugin ships one or more skills at skills/<skill>/SKILL.md. Validate
+    each skill's frontmatter has a non-empty `description` (the discoverable
+    trigger) and `group` (its docs-site sidebar slot); neither value enters the
+    catalog — this only moves the failure to --check/CI time."""
+    skill_mds = sorted((pdir / "skills").glob("*/SKILL.md"))
+    if not skill_mds:
+        raise SystemExit(f"{pdir} has no skills/*/SKILL.md — a plugin ships at least one skill")
+    for md in skill_mds:
+        fields = _frontmatter_fields(md.read_text("utf-8"))
+        for key in ("description", "group"):
+            if fields.get(key, "").strip("[]'\" ") == "":
+                raise SystemExit(f"{md.relative_to(REPO)}: frontmatter needs a non-empty {key!r}")
+
+
 def build_catalog() -> dict:
     plugins = []
     for pdir in sorted(p for p in PLUGINS_DIR.iterdir() if p.is_dir()):
@@ -58,6 +97,7 @@ def build_catalog() -> dict:
             raise SystemExit(
                 f"plugin name {name!r} != directory {pdir.name!r} in {manifest_path} "
                 f"— the git-subdir path is derived from the directory, so they must match")
+        validate_skills(pdir)
         plugins.append({
             "name": name,
             "source": {
