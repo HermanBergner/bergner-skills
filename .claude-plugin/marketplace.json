@@ -6,6 +6,15 @@
   },
   "plugins": [
     {
+      "name": "authoring",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/HermanBergner/bergner-skills.git",
+        "path": "plugins/authoring"
+      },
+      "description": "The house authoring formats, bundled as one domain plugin — handing a discrete task to a Claude Code agent (claude-code-handover) and authoring well-formed tasks in the Bergner todo MCP (authoring-todo-tasks) — plus /authoring:handover and /authoring:todo-task commands to invoke them on demand."
+    },
+    {
       "name": "pr-review",
       "source": {
         "source": "git-subdir",
